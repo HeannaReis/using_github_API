@@ -1,12 +1,20 @@
+import os
 import requests
+from dotenv import load_dotenv
 
-GITHUB_USER = "HeannaReis"
-TOKEN = "TOKEN"
+# Carrega as variáveis do arquivo .env
+load_dotenv()
+
+GITHUB_USER = os.getenv("GITHUB_USER")
+TOKEN = os.getenv("GITHUB_TOKEN")
 API_URL = "https://api.github.com"
 HEADERS = {
     "Authorization": f"token {TOKEN}",
     "Accept": "application/vnd.github.v3+json"
 }
+
+print(f"Token carregado com sucesso para {GITHUB_USER}!")  # Para verificar se foi carregado
+
 
 def get_github_users(url):
     users = set()
